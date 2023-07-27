@@ -34,7 +34,7 @@ def main():
         if args.output_file:
             writer = open(args.output_file, "w")
 
-        print(encode(reader.read(), pad_digits=args.pad_digits), file=writer)
+        print(encode(reader.read()), file=writer)
 
 
 if __name__ == "__main__":

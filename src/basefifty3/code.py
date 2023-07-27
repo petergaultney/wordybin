@@ -28,7 +28,9 @@ def encode(_bytes: bytes, titlecase: bool = True) -> str:
             outstr += title(_fives[word1 & 0x1FF])  # only 9 bits
             outstr += title(_threes[byte2 & 0x7F])  # only 7 bits
         except StopIteration:
-            outstr += title(_fives[word1 & 0x1FF])  # 9 bits, but the last one will be zero
+            outstr += title(
+                _fives[word1 & 0x1FF]
+            )  # 9 bits, but the last one will be zero
 
     return outstr
 
@@ -44,9 +46,22 @@ def decode(_str: str) -> bytes:
         else:
             w3 = ""
 
+        if w5 not in _word_to_val:
+            raise ValueError(
+                f"'{_str[s_pos:s_pos+5]}' at position {s_pos}"
+                f" (context: {_str[max(0, s_pos-16):s_pos+5]})"
+                " is not a valid WordyBin word."
+            )
         bit_accum = _word_to_val[w5] << 7
-        bit_accum |= _word_to_val[w3] & 0x7F
         outbytes.append(bit_accum >> 8)
-        outbytes.append(bit_accum & 0xFF)
+        if w3:
+            if w3 not in _word_to_val:
+                raise ValueError(
+                    f"'{_str[s_pos+5:s_pos+8]}' at position {s_pos + 5}"
+                    f" (context: {_str[max(0, s_pos-13):s_pos+8]})"
+                    " is not a valid WordyBin word."
+                )
+            bit_accum |= _word_to_val[w3] & 0x7F
+            outbytes.append(bit_accum & 0xFF)
         s_pos += 8
     return bytes(outbytes)

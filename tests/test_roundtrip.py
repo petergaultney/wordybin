@@ -3,7 +3,7 @@ import re
 
 import pytest
 
-from basefifty3 import decode, encode
+from wordybin import decode, encode
 
 
 def _bytes(_bytes):

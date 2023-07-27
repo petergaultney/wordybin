@@ -1,0 +1,43 @@
+exclude: >
+      (?x)(
+          \.mypy_cache/
+          | \.pytest_cache/
+          | \.venv/
+          | build/
+          | dist/
+          | \S+\.egg-info/
+      )
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-case-conflict
+      - id: check-json
+      - id: check-toml
+      - id: mixed-line-ending
+      - id: check-added-large-files
+
+  - repo: local
+    hooks:
+      - id: isort
+        name: isort
+        language: system
+        require_serial: true
+        types: [python]
+        entry: poetry run isort
+
+      - id: black
+        name: black
+        language: system
+        require_serial: true
+        types: [python]
+        entry: poetry run black --config pyproject.toml
+
+      - id: mypy
+        name: mypy
+        entry: poetry run mypy src
+        language: system
+        pass_filenames: false
+        require_serial: true

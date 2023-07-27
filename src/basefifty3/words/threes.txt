@@ -40,7 +40,6 @@ eel
 egg
 elf
 end
-eye
 far
 fax
 fee
@@ -60,8 +59,8 @@ ham
 hay
 hen
 her
-hip
 him
+hip
 hoe
 hop
 hub
@@ -83,12 +82,11 @@ lap
 law
 lay
 leg
-lie
 lob
 low
 mad
-may
 man
+may
 mix
 mom
 mud
@@ -126,6 +124,5 @@ way
 web
 who
 win
-wry
 yes
 zoo

@@ -2,12 +2,15 @@ from pathlib import Path
 
 __parent = Path(__file__).parent
 _fives = open(__parent / "words/512.txt").read().splitlines()
+assert len(_fives) == 512
+assert sorted(_fives) == _fives
 _threes = open(__parent / "words/threes.txt").read().splitlines()
+assert len(_threes) == 128, len(_threes)
+assert sorted(_threes) == _threes
+
 _word_to_val = {w: i for i, w in enumerate(_fives)}
 for i, w in enumerate(_threes):
     _word_to_val[w] = i
-
-# assert len(_word_to_val) == 512 + 128, len(_word_to_val)
 
 
 def encode(_bytes: bytes, titlecase: bool = True) -> str:
@@ -25,9 +28,7 @@ def encode(_bytes: bytes, titlecase: bool = True) -> str:
             outstr += title(_fives[word1 & 0x1FF])  # only 9 bits
             outstr += title(_threes[byte2 & 0x7F])  # only 7 bits
         except StopIteration:
-            outstr += title(
-                _fives[word1 & 0x1FF]
-            )  # 9 bits, but the last one will be zero
+            outstr += title(_fives[word1 & 0x1FF])  # 9 bits, but the last one will be zero
 
     return outstr
 

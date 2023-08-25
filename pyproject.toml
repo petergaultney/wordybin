@@ -1,9 +1,10 @@
 [tool.poetry]
 name = "wordybin"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Peter Gaultney"]
 readme = "README.md"
+include = ['py.typed']
 
 [tool.poetry.dependencies]
 python = "^3.8"

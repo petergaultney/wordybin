@@ -1,10 +1,13 @@
 [tool.poetry]
 name = "wordybin"
-version = "0.1.1"
-description = ""
-authors = ["Peter Gaultney"]
+version = "0.2.0"
+description = "Memorable word-based encoding for binary data."
+authors = ["Peter Gaultney <petergaultney@gmail.com>"]
 readme = "README.md"
 include = ['py.typed']
+license = 'MIT'
+repository = "https://github.com/petergaultney/wordybin/"
+homepage = "https://github.com/petergaultney/wordybin/"
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -14,6 +17,7 @@ mypy = "^1.4.1"
 black = "^23.7.0"
 pytest = "^7.4.0"
 isort = "^5.12.0"
+jellyfish = "^1.0.0"
 
 [build-system]
 requires = ["poetry-core"]

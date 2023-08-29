@@ -11,12 +11,20 @@ binary data. In this case, a 16-bit encoding system, with one of 512
    stepwise linear relationship to the source data. This can be
    advantageous for humans who are trying to eyeball something, and
    stands in contrast to encodings like BIP39.
-2. Every word can be uniquely pronounceable, such that there is no
-   ambiguity when restricted to the list of common 5 letter English
-   words. A lot of effort has been put into making 'hearing' these
-   words read be as unambigous as possible.
-3. Additionally, every word can have its accent on the first syllable,
-   to make reading out loud easier.
+2. Each word can have its accent on the first syllable, to make
+   reading out loud easier.
+3. Each word can be pronounced uniquely, such that there is reduced
+   ambiguity when restricted to the built-in list of English words. A
+   lot of effort has been put into making 'hearing' these words read
+   be as unambigous as possible.
+   - Caveats:
+     - It is not possible to ensure strong phonetic difference across
+       this many words, but we've attempted to provide as much
+       phonetic difference as possible.
+	 - Future versions could redo the wordlist to improve this at the
+       cost of backward-incompatibility; suggestions backed up by
+       `jellyfish` are welcomed since this concept is still in its
+       early stages.
 
 The words are built on prior art; mostly, this is the
 [BIP39 English wordlist](https://github.com/bitcoin/bips/blob/master/bip-0039/english.txt),
@@ -24,9 +32,10 @@ filtered to 5 and 3-letter words, then filtered again for various
 words that don't fit the above restrictions or that I felt like
 dropping for no particular reason. Since this leaves less than 512
 words, I added some 4-letter words from the BIPS wordlist that have
-can have an adjectival version ending in `y`. There were not enough
-3-letter words, and many of them diverged from the given criteria, so
-I added quite a few of those to get to 128.
+can have an adjectival version ending in `y`, plus a couple of
+others. There were not enough 3-letter words, and many of them
+diverged from the given criteria, so I added quite a few of those to
+get to 128.
 
 ## Why would I actually use this?
 

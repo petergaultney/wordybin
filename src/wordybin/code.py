@@ -1,16 +1,20 @@
 from pathlib import Path
 
+from ._backward import add_old_words
+
 __dir = Path(__file__).parent
 _fives = open(__dir / "words/512.txt").read().splitlines()
-assert len(_fives) == 512
+assert len(set(_fives)) == 512
 assert sorted(_fives) == _fives
 _threes = open(__dir / "words/threes.txt").read().splitlines()
-assert len(_threes) == 128, len(_threes)
+assert len(set(_threes)) == 128, len(_threes)
 assert sorted(_threes) == _threes
 
 _word_to_val = {w: i for i, w in enumerate(_fives)}
 for i, w in enumerate(_threes):
     _word_to_val[w] = i
+
+add_old_words(_word_to_val)
 
 
 def encode(_bytes: bytes, titlecase: bool = True) -> str:

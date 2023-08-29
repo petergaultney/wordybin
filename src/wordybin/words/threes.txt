@@ -25,12 +25,12 @@ cob
 cow
 coy
 cry
-cub
+cup
 dam
 day
 dig
 dim
-dog
+dot
 dry
 dub
 ear
@@ -44,7 +44,7 @@ far
 fax
 fee
 few
-fin
+fit
 fix
 fly
 fog
@@ -104,7 +104,7 @@ own
 pal
 paw
 put
-raw
+rap
 rib
 rug
 run

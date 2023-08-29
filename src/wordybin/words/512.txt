@@ -493,7 +493,7 @@ voice
 wagon
 water
 weird
-whale
+wharf
 wheat
 wheel
 where
